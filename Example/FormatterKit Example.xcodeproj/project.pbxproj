@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		500C0A6D1C948B5500F643D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 500C0A6C1C948B5500F643D3 /* Main.storyboard */; };
 		502B4F441C686832007347C5 /* TTTTimeIntervalFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502B4F431C686832007347C5 /* TTTTimeIntervalFormatterTests.swift */; };
+		502CEF451CBCC0280050B09F /* TTTTimeIntervalFormatterTests-French.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502CEF441CBCC0280050B09F /* TTTTimeIntervalFormatterTests-French.swift */; };
 		502F03151CA8FDCC0026119C /* FormatterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 502F03141CA8FDCC0026119C /* FormatterKit.framework */; };
 		50E226D81C6863BF0088FAA5 /* AppDeletage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E226D71C6863BF0088FAA5 /* AppDeletage.swift */; };
 		F8202D0C17F50AF5006C5810 /* ColorFormatterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8202D0B17F50AF5006C5810 /* ColorFormatterViewController.m */; };
@@ -75,6 +76,7 @@
 		500783131CAB9BAE0065B481 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		500C0A6C1C948B5500F643D3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		502B4F431C686832007347C5 /* TTTTimeIntervalFormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTTTimeIntervalFormatterTests.swift; sourceTree = "<group>"; };
+		502CEF441CBCC0280050B09F /* TTTTimeIntervalFormatterTests-French.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TTTTimeIntervalFormatterTests-French.swift"; sourceTree = "<group>"; };
 		502F03141CA8FDCC0026119C /* FormatterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FormatterKit.framework; path = "../../../Library/Developer/Xcode/DerivedData/FormatterKit-evcpsmwiwrimnmfbebdofilhkvkp/Build/Products/Debug-iphonesimulator/FormatterKit.framework"; sourceTree = "<group>"; };
 		504295101C683A6300143D6F /* FormatterKitTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FormatterKitTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		504295131C683A9C00143D6F /* FormatterKit Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FormatterKit Example-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				504295101C683A6300143D6F /* FormatterKitTests-Bridging-Header.h */,
 				659BF4B91AE27FA300CD4A06 /* Supporting Files */,
 				502B4F431C686832007347C5 /* TTTTimeIntervalFormatterTests.swift */,
+				502CEF441CBCC0280050B09F /* TTTTimeIntervalFormatterTests-French.swift */,
 			);
 			path = FormatterKitTests;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				502B4F441C686832007347C5 /* TTTTimeIntervalFormatterTests.swift in Sources */,
+				502CEF451CBCC0280050B09F /* TTTTimeIntervalFormatterTests-French.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
