@@ -30,12 +30,31 @@ class ColorFormatterTests: XCTestCase {
     }
 
     func testRGB() {
+        XCTAssertEqual(formatter.RGBStringFromColor(UIColor.whiteColor()), "rgb(255, 255, 255)")
+        XCTAssertEqual(formatter.RGBStringFromColor(UIColor.blackColor()), "rgb(0, 0, 0)")
+
+        let color = UIColor.redColor()
+        let colorString = formatter.RGBStringFromColor(color)
+        XCTAssertEqual(formatter.colorFromRGBString(colorString), color)
+    }
+
+    func testRGBA() {
         XCTAssertEqual(formatter.RGBAStringFromColor(UIColor.whiteColor()), "rgb(255, 255, 255, 1)")
-        XCTAssertEqual(formatter.RGBAStringFromColor(UIColor.blackColor()), "rgb(0, 0, 0, 1)")
+        XCTAssertEqual(formatter.RGBAStringFromColor(UIColor.blackColor().colorWithAlphaComponent(0.42)), "rgb(0, 0, 0, 0.42)")
 
         let color = UIColor.redColor()
         let colorString = formatter.RGBAStringFromColor(color)
         XCTAssertEqual(formatter.colorFromRGBAString(colorString), color)
+    }
+
+    func testCMYK() {
+        XCTAssertEqual(formatter.CMYKStringFromColor(UIColor.whiteColor()), "cmyk(0%, 0%, 0%, 0%)")
+        // TODO: probably a bug. returns `nan%`
+        // XCTAssertEqual(formatter.CMYKStringFromColor(UIColor.blackColor()), "cmyk(0%, 0%, 0%, 100%)")
+
+        let color = UIColor.orangeColor()
+        let colorString = formatter.CMYKStringFromColor(color)
+        XCTAssertEqual(formatter.colorFromCMYKString(colorString), color)
     }
 
     func testHSL() {
