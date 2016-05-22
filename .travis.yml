@@ -48,4 +48,4 @@ script:
   - test -n "$TTT_LANG" && rake spec:$TTT_LANG || bundle exec $TTT_COMMAND
 
 after_success:
-  - test -n "$TTT_LANG" && bundle exec slather coverage --scheme="$TTT_LANG" --build-directory="build/DerivedData/#{lang}" --coveralls
+  - test -n "$TTT_LANG" && bundle exec slather coverage --scheme="$TTT_LANG" --build-directory="build/DerivedData/$TTT_LANG" --coveralls
