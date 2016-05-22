@@ -1,4 +1,4 @@
-known_languages = [
+languages = [
   'Arabic', 'Catalan', 'Chinese-Simplified', 'Chinese-Traditional',
   'Czech', 'Danish', 'Dutch', 'English', 'French', 'German', 'Greek',
   'Hebrew', 'Hungarian', 'Indonesian', 'Italian', 'Japanese', 'Korean',
@@ -23,18 +23,8 @@ task :clean do
   run "rm -rf build/"
 end
 
-desc 'Run unit tests. Pass TTT_LANG=French to run individual language '
-task :spec do
-  languages = []
-
-  if ENV['TTT_LANG']
-    raise "Unknown TTT_LANG value" unless known_languages.include? ENV['TTT_LANG']
-    languages = [ENV['TTT_LANG']]
-  else
-    languages = known_languages
-    Rake::Task["clean"].invoke
-  end
-
+desc 'Run unit tests'
+task :spec => :clean do
   status = languages.map do |lang|
     if is_travis?
       puts "travis_fold:start:ios.tests.#{lang}"
