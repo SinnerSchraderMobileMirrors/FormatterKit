@@ -4,16 +4,48 @@ osx_image: xcode7.3
 install:
   - bundle install
 
+env:
+  - TTT_LANG="Arabic" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Catalan" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Chinese-Simplified" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Chinese-Traditional" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Czech" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Danish" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Dutch" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="English" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="French" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="German" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Greek" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Hebrew" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Hungarian" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Indonesian" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Italian" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Japanese" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Korean" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Malay" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Norwegian-Bokmal" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Norwegian-Nynorsk" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Polish" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Portuguese" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Portuguese-Brazil" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Romanian" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Russian" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Spanish" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Swedish" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Thai" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Turkish" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Ukrainian" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_LANG="Vietnamese" TTT_COMMAND="rake spec:$TTT_LANG"
+  - TTT_COMMAND="rake integration:cocoapods_ios"
+  - TTT_COMMAND="rake integration:cocoapods_ios_static"
+  - TTT_COMMAND="rake integration:cocoapods_osx"
+  - TTT_COMMAND="rake integration:carthage_ios"
+  - TTT_COMMAND="rake integration:carthage_osx"
+  - TTT_COMMAND="pod lib lint"
+  - TTT_COMMAND="pod lib lint --use-libraries"
+
 script:
-  - bundle exec rake spec
-  - bundle exec rake integration:cocoapods_ios
-  - bundle exec rake integration:cocoapods_ios_static
-  - bundle exec rake integration:cocoapods_osx
-  - bundle exec rake integration:carthage_ios
-  - bundle exec rake integration:carthage_osx
-  - bundle exec pod lib lint
-  - bundle exec pod lib lint --use-libraries
+  - bundle exec $TTT_COMMAND
 
 after_success:
-  - bundle exec rake "coverage:consolidate"
-  - bundle exec slather coverage --coveralls
+  - test -n "$TTT_LANG" && bundle exec slather coverage --scheme="$TTT_LANG" --coveralls

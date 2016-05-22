@@ -26,21 +26,23 @@ end
 desc 'Run unit tests'
 task :spec => :clean do
   status = languages.map do |lang|
-    if is_travis?
-      puts "travis_fold:start:ios.tests.#{lang}"
-    else
-      puts "===\n=== Running tests for #{lang}\n==="
-    end
-
-    status = run "xcodebuild -workspace FormatterKit.xcworkspace -scheme #{lang} -sdk iphonesimulator -derivedDataPath build/DerivedData/#{lang} test | bundle exec xcpretty --test && exit ${PIPESTATUS[0]}" || 0
-    if status.zero? && is_travis?
-      puts "travis_fold:end:ios.tests.#{lang}"
-    end
-
-    status
+    puts "===\n=== Running tests for #{lang}\n==="
+    run "xcodebuild -workspace FormatterKit.xcworkspace -scheme #{lang} -sdk iphonesimulator -derivedDataPath build/DerivedData/#{lang} test | bundle exec xcpretty --test && exit ${PIPESTATUS[0]}" || 0
   end.max
 
   exit status
+end
+
+namespace :spec do
+  languages.each do |lang|
+    desc "Run unit tests specific for #{lang}"
+    task lang do
+      puts "travis_fold:start:ios.tests.#{lang}" if is_travis?
+      status = run "xcodebuild -workspace FormatterKit.xcworkspace -scheme #{lang} -sdk iphonesimulator test | bundle exec xcpretty --test && exit ${PIPESTATUS[0]}" || 0
+      puts "travis_fold:end:ios.tests.#{lang}" if is_travis? && status.zero?
+      exit status
+    end
+  end
 end
 
 desc 'Runs all integration tests. Note: exit status is not handled properly.'

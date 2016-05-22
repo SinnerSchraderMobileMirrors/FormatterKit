@@ -1,7 +1,8 @@
 workspace: FormatterKit.xcworkspace
 xcodeproj: Example/FormatterKit Example.xcodeproj
-build_directory: build/slather
+#build_directory: build/slather
 source_directory: FormatterKit
-binary_file: build/DerivedData/English/Build/Intermediates/CodeCoverage/Products/Debug-iphonesimulator/FormatterKit.framework/FormatterKit
+binary_basename: FormatterKit
+#binary_file: build/DerivedData/English/Build/Intermediates/CodeCoverage/Products/Debug-iphonesimulator/FormatterKit.framework/FormatterKit
 ignore:
   - ../**
