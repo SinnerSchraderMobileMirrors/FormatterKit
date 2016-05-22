@@ -38,7 +38,7 @@ namespace :spec do
     desc "Run unit tests specific for #{lang}"
     task lang do
       puts "travis_fold:start:ios.tests.#{lang}" if is_travis?
-      status = run "xcodebuild -workspace FormatterKit.xcworkspace -scheme #{lang} -sdk iphonesimulator test | bundle exec xcpretty --test && exit ${PIPESTATUS[0]}" || 0
+      status = run "xcodebuild -workspace FormatterKit.xcworkspace -scheme #{lang} -sdk iphonesimulator -derivedDataPath build/DerivedData/#{lang} test | bundle exec xcpretty --test && exit ${PIPESTATUS[0]}" || 0
       puts "travis_fold:end:ios.tests.#{lang}" if is_travis? && status.zero?
       exit status
     end
